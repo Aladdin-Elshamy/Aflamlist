@@ -36,7 +36,7 @@ function clearMovies() {
 async function getMovies() {
     clearMovies();
     displayLoading();
-    const res = await fetch(`http://www.omdbapi.com/?apikey=3205b2c0&s=${searchTerm.value}`);
+    const res = await fetch(`https://www.omdbapi.com/?apikey=3205b2c0&s=${searchTerm.value}`);
     const data = await res.json();
     if (data.Response === "True") {
         listMoviesNum = data.Search.length;
