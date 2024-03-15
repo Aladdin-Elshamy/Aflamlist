@@ -12,6 +12,10 @@ let listMoviesNum = 0;
 let t = 10
 const movieIdList = [];
 
+if(localStorage.getItem("savedMovies")){
+    savedMovies = JSON.parse(localStorage.getItem("savedMovies"));
+}
+
 searchTerm.addEventListener("keypress",function(e){
     if(e.key === "Enter"){
         getMovies();
@@ -52,7 +56,7 @@ async function getMovies() {
 
 
 async function getMovieInfo(movie) {
-    const res = await fetch(`http://www.omdbapi.com/?apikey=3205b2c0&t=${movie}`);
+    const res = await fetch(`https://www.omdbapi.com/?apikey=3205b2c0&t=${movie}`);
     const data = await res.json();
     displayMovies(data);
 }
@@ -112,12 +116,13 @@ function displayMovies(movie) {
     
 }
 function addToSavedMovies(movie) {
-    if (!savedMovies.some(savedMovie => Object.keys(savedMovie).every(key => savedMovie[key] === movie[key]))) {
+    const movieString = JSON.stringify(movie);
+    if (!savedMovies.some(savedMovie => JSON.stringify(savedMovie) === movieString)) {
         savedMovies.push(movie);
     }
 }
 async function saveMovies(movieId) {
-    const res = await fetch(`http://www.omdbapi.com/?apikey=3205b2c0&i=${movieId}`);
+    const res = await fetch(`https://www.omdbapi.com/?apikey=3205b2c0&i=${movieId}`);
     const data = await res.json();  
     addToSavedMovies(data);
     localStorage.setItem("savedMovies", JSON.stringify(savedMovies));
