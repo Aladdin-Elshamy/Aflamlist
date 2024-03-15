@@ -34,6 +34,14 @@ else{
     empty.style.display = "flex";
 }
 function displaySavedMovies(movie){
+    for(const [key,value] of Object.entries(movie)){
+        if(key == "Poster" && value == "N/A"){
+            movie[key] = "./images/not-available.png"
+        }
+        else if(key != "Poster" && value == "N/A"){
+            movie[key] = "Not Available"
+        }
+    }
     contentSave += `
     <section class="movie" data-id="${movie.imdbID}">
         <div class="movie-img">
