@@ -116,10 +116,10 @@ function displayMovies(movie) {
     
 }
 function addToSavedMovies(movie) {
-    const movieString = JSON.stringify(movie);
-    if (!savedMovies.some(savedMovie => JSON.stringify(savedMovie) === movieString)) {
+    if (!savedMovies.some(savedMovie => savedMovie.imdbID === movie.imdbID)) {
         savedMovies.push(movie);
     }
+
 }
 async function saveMovies(movieId) {
     const res = await fetch(`https://www.omdbapi.com/?apikey=3205b2c0&i=${movieId}`);
