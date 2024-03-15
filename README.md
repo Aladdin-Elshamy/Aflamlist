@@ -1,6 +1,6 @@
 # Aflamlist Project
 
-![image](https://github.com/Aladdin-Elshamy/Aflamlist/assets/122921299/5b5f3c6e-793f-4e51-b4da-e6cb96d8236d)
+![image](https://github.com/Aladdin-Elshamy/Aflamlist/assets/122921299/61d2ff00-1376-48d9-bd62-b6591854b934)
 Welcome to the Aflamlist project! This project is a web application that allows users to access a curated list of movies. The project is hosted on GitHub Pages and can be accessed at [Aflamlist](https://aladdin-elshamy.github.io/Aflamlist/).
 
 ## Overview
