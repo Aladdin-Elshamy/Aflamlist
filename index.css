@@ -1,0 +1,359 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.container{
+    width: 80%;
+    max-width: 900px;
+    margin-inline: auto;
+}
+body{
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+/* Header */
+header{
+    position: relative;
+    height: 15em;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    background-position: center;
+    color: #fff;
+}
+@media (min-width:768px){
+    header{
+        height: 18em;
+    }
+}
+header::before{
+    content: "";
+    background-image: url("images/andre-tan-THJJRUhNlEc-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+}
+
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    isolation: isolate;
+    flex-wrap: wrap;
+}
+header a{
+    color: #fff;
+    text-decoration: none;
+    font-size:clamp(0.75rem, 4vw - 1.25rem, 0.875rem);
+    font-weight: 500;
+    display: block;
+    text-shadow: 0 0 3px #000;
+    cursor: pointer;
+    
+}
+header h1{
+    margin: 0;
+    font-weight: 800;
+    font-size: clamp(1.563rem, 5vw - 1rem, 2.188rem);
+    
+}
+@media (max-width:479px){
+    header .container{
+        flex-direction: column;
+        gap:0.5em
+    }
+    header h1{
+        text-align: center;
+    }
+}
+
+/* Main */
+input,.search-btn{
+    height: 100%;
+    border: none;
+    outline: none;  
+    border: 1.3px solid #D1D5DB;
+    font-weight: 500;
+}
+input{
+    padding-left: 3em;
+    width: 70%;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+
+}
+.search-btn{
+    background-color: #F9FAFB;
+    color: #000;
+    cursor: pointer;
+    width: 30%;
+    border-left: none;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    transition: 0.1s;
+}
+.search-btn:active{
+    width: 29%;
+    color:#D1D5DB
+}
+@media (min-width:768px){
+    input{
+        width: 80%;
+    }
+    .search-btn{
+        width: 20%;
+    }
+    .search-btn:active{
+        width: 19%;
+    }
+}
+/* index.html */
+.search{
+    position: relative;
+    height: 2.3em;
+    display: flex;
+    width: 100%;
+    top: -1em;
+    font-size:clamp(0.688rem, 4vw - 1.25rem, 1rem);
+    font-weight: 500;
+}
+.search::before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    top: -65%;
+    left: -1.2em;
+    font-size: 0.8rem;
+    color: #9ca3af;
+    content: "\f002";
+    z-index: 1;
+    padding-block: 1.5em;
+    padding-left: 2em;
+    font-size:clamp(0.875rem, 4vw - 1rem, 1.25rem);
+}
+/* index and watchlist*/
+main{
+    height: calc(100% - 15em);
+    display: flex;
+}
+@media (min-width:768px){
+    main{
+        height: calc(100% - 18em);
+    }
+}
+.empty,.loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100% !important;
+}
+.empty{
+    flex-direction: column;
+    color:#DFDDDD;
+    text-align: center;
+    font-weight: 700;
+}
+.loading{
+    width: min(150px,30%);
+    margin-inline: auto;    
+}
+.empty i{
+    font-size: 5rem;
+}
+.empty p{
+    font-size: clamp(1.125rem, 4vw - 1rem, 1.563rem);
+}
+.hidden{
+    display: none;
+}
+
+/* Watchlist */
+
+.circle-plus {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #363636;
+    color: #fff;
+    cursor: pointer;
+}
+
+.circle-plus i {
+    font-size: clamp(0.875rem, 5vw - 1.5rem, 1rem) ;
+}
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    margin-top: 1.5em;
+    width: fit-content;
+    text-decoration: none;
+    color: #363636;
+}
+
+.empty .text{
+    font-size: clamp(0.875rem, 4vw - 1rem, 1.25rem);
+
+}
+
+/* Movie */
+.movie{
+    display: grid;
+    max-width: 400px;
+    margin-inline: auto;
+    align-items: center;
+    row-gap: 1.2em;
+    padding-block: 1em;
+    line-height: 1.5;
+   
+}
+.movie-img{
+    text-align: center;
+}
+.movie-img img{
+    width: 100%;
+    max-width: 200px;
+    border-radius: 3px;
+    object-fit: cover;
+}
+@media(max-width:767px){
+    .movie-img img{
+        min-height: 300px;
+    }
+}
+@media (min-width:767px){
+    .movie{
+        grid-template-columns: auto 1fr;
+        grid-template-rows: repeat(3,auto);
+        column-gap: 1em;
+        row-gap: 0;
+        max-width: 700px;
+    }
+    .movie-img{
+        grid-row: 1 / -1;
+        width: 150px;
+        height: 200px;
+        
+    }
+    .movie-img img{
+        height: 100%;
+        object-fit: cover;
+    }
+
+}
+.movie:not(:last-child){
+    border-bottom: 3px solid #E5E7EB;
+    padding-block: 1.5em;
+}
+
+.save-btn,.delete-btn{
+    display: inline-flex;
+    gap: 0.5em;
+    border: none;
+    background-color: transparent;  
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: 0.1s;
+}
+.save-btn:active,.delete-btn:active{
+    transform: scale(0.95);
+    color: #D1D5DB;
+}
+.movie-info{
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    justify-content: space-between;
+
+}
+.movie-info .rating{
+    font-size: 0.9375rem;
+    text-align: right;
+}
+.movie-info h2{
+    font-weight: 500;
+    font-size: clamp(0.938rem, 4vw - 1rem, 1.25rem);
+}
+.movie-type{
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    justify-content: space-between;
+}
+@media (min-width:767px){
+    .movie-type{
+        justify-content: flex-start;
+    }
+}
+.genre,.runtime,
+.save-btn,.delete-btn{
+    color: #111827;
+    font-weight: 400;
+    font-size:clamp(0.75rem, 4vw - 1.25rem, 0.875rem) !important;
+    height: fit-content;
+}
+.overview{
+    color:#6B7280;
+    max-width: 450px;
+    font-size: clamp(0.875rem, 4vw - 1rem, 1rem);
+}
+.save-btn .circle-plus,.delete-btn .circle-plus{
+    width: 23px;
+    height: 23px;
+    display: flex;
+    
+}
+.save-btn .circle-plus i,
+.delete-btn .circle-plus i{
+    font-size:0.625rem;
+
+}
+.added{
+    position: fixed;
+    top: -100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    transition: 0.5s;
+}
+.added .container
+{
+    color: #fff;
+    padding-block: 1em;
+    font-size: clamp(0.875rem, 4vw - 1rem, 1.25rem);
+    background-color: rgba(38, 176, 10, 0.61);
+    text-shadow: 0 0 1px #000;
+    font-weight: 700;
+    letter-spacing: 0.5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+    border-radius: 3px;
+    padding-inline: 1em;
+    margin-inline: auto;
+    max-width: 350px;
+    z-index: 1;
+    margin-inline: auto;
+}
+@media (min-width:767px){
+    .added .container{
+        max-width: 700px;
+    }
+}
